@@ -1,19 +1,18 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
-    extend: {
-      colors: {
-        blue: "#2997FF",
-        gray: {
-          DEFAULT: "#86868b",
-          100: "#94928d",
-          200: "#afafaf",
-          300: "#42424570",
-        },
-        zinc: "#101010",
-      },
-    },
-  },
-  plugins: [],
-};
+import { sentryVitePlugin } from "@sentry/vite-plugin";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  base: "/Apple-Clone-Website-01/", // Required for GitHub Pages
+  plugins: [
+    react(),
+    sentryVitePlugin({
+      org: "jsm-x9",
+      project: "javascript-react"
+    })
+  ],
+  build: {
+    sourcemap: true
+  }
+});
